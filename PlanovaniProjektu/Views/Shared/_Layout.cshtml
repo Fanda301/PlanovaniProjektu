@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PlanovaniProjektu</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PlanovaniProjektu.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        @*@if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer" || @ViewBag.Autorizovano == "Uzivatel")
+        {
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PlanovaniProjektu</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        @if (@ViewBag.Autorizovano == "" || @ViewBag.Autorizovano == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login">Přihlášení</a>
+                            </li>
+                        }
+                        @if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer" || @ViewBag.Autorizovano == "Uzivatel")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="LogOut">Odhlásit se</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>   
+        }*@
+        @if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer" || @ViewBag.Autorizovano == "Uzivatel")
+        {
+            <nav class="navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid" style="background-color: cyan;">
+                <div class="Mrow">
+                    <div>
+                        <a class="nazevStranky" asp-area="" asp-controller="Home" asp-action="Index">PlanovaniProjektu</a>
+                    </div>
+                     <div class="vPravo">
+                    <ul class="navbar-nav">
+                        @if (@ViewBag.Autorizovano == "Manazer")
+                        {
+                             <li class="nav-item">
+                                <a class="nav-link text-dark podSebe" asp-area="" asp-controller="Uzivatel" asp-action="SeznamUzivatelu">
+                                    <img src="~/img/users.svg" style="max-width: 50px; max-height: 40px;" alt="Popis obrázku">
+                                    <p>Uživatelé</p>
+                                </a>
+                            </li>   
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark podSebe" asp-area="" asp-controller="Projekt" asp-action="Index">
+                                <img src="~/img/file.svg" style="max-width: 50px; max-height: 40px;" alt="Popis obrázku">
+                                <p>Projekty</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark podSebe" asp-area="" asp-controller="Uzivatel" asp-action="MůjProfil">
+                                <img src="~/img/user.svg" style="max-width: 50px; max-height: 40px;" alt="Popis obrázku">
+                                <p>Můj profil</p>
+                            </a>
+                        </li>
+                        @if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer" || @ViewBag.Autorizovano == "Uzivatel")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark podSebe" asp-area="" asp-controller="Login" asp-action="LogOut">
+                                    <img src="~/img/logout.svg" style="max-width: 50px; max-height: 40px;" alt="Popis obrázku">
+                                    <p>Odhlásit se</p>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                </div>
+               
+            </div>
+        </nav>   
+        }
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - PlanovaniProjektu - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿<h1>Výpis práce</h1>
+<hr />
+
+<div>
+    <form method="" asp-action="VypisPrace" id="filterForm" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
+        <div style="width: 80%;">
+            <label>OD :</label>
+            <input type="date" class="form-control" id="datum" name="datum" value="@ViewBag.datum" />
+        </div>
+        <div style="width: 80%;">
+             <label>DO :</label>
+             <input type="date" class="form-control" style="width: 80%;"id="datumDruhy" name="datumDruhy" value="@ViewBag.datumDruhy" />
+        </div >
+        <div style="width: 80%;">
+             <label>Projekt</label>
+             <input type="number" class="form-control" style="width: 80%;"id="projekt" name="projekt" value="" />
+        </div >
+        <div style="width: 80%;">
+            <label style="visibility: hidden;">...</label>
+             <button class="loginButton" type="submit" id="filterButton" style="width: 80%;" >Filtrovat</button>
+        </div>
+    </form>
+</div>
+
+
+<hr />
+<div>
+    <table class="table">
+        <thead>
+            <td scope="col">
+                Uloha
+            </td>
+            <td scope="col">
+                odpracovano
+            </td>
+            <td scope="col">
+                datum
+            </td>
+        </thead>
+        <tbody>
+        @foreach (SeznamPraceProVypis sp in @ViewBag.SeznamPrace )
+        {
+            <tr>
+                <td scope="row">@sp.nazevUlohy</td>
+                <td>@sp.odpracovano</td>
+                <td>@sp.datum</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+<hr />
+
+<div class="Mrow">
+    <div>
+       <label>Čas celkem strávený prací: </label><br />
+       <label>Finanční ekvivalent odvedené práce za vybrané období: </label>
+    </div>
+    <div>
+         <b>
+            @ViewBag.Hodiny hodin <br />
+            @ViewBag.Suma kč
+        </b>
+    </div>
+</div>
+
+

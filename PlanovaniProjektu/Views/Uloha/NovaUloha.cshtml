@@ -1,0 +1,46 @@
+﻿@model PlanovaniProjektu.Models.TbUloha
+
+@{
+    ViewData["Title"] = "NovaUloha";
+}
+
+<h1>Nová úloha</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="VytvoreniUlohy">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nazev" class="control-label"></label>
+                <input asp-for="Nazev" class="form-control" />
+                <span asp-validation-for="Nazev" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Popis" class="control-label"></label>
+                 <textarea asp-for="Popis" class="form-control" style="height: 100px;" /> </textarea>
+                <span asp-validation-for="Popis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HodinovaSazba" class="control-label"></label>
+                <input asp-for="HodinovaSazba" class="form-control" />
+                <span asp-validation-for="HodinovaSazba" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PredpokladanaDobaTrvani" class="control-label">Předpokládaná doba trvání (hodiny)</label>
+                <input asp-for="PredpokladanaDobaTrvani" class="form-control" />
+                <span asp-validation-for="PredpokladanaDobaTrvani" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-top: 20px;">
+                <button type="submit" value="Vytvořit" class="loginButton"> </button>
+                <a class="loginButton btnSeznam" asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

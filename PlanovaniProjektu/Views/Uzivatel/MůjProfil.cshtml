@@ -1,0 +1,70 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Můj profil";
+}
+
+@if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer" || @ViewBag.Autorizovano == "Uzivatel")
+{
+            
+        <div class="Mrow">
+            <div>
+                 <form asp-controller="Uzivatel" asp-action="ZmenaUdaju" method="post" style="border: 1px solid black; background-color: lightslategrey; padding: 15px; width: 90%;">
+                       @foreach (TbUzivatel u in Model) {
+                           <div class="form-group">
+                                <label class="control-label">Jméno:</label>
+                                <input type="text" class="form-control input-form" value="@u.Jmeno" id="jmeno" name="jmeno" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Přijímení:</label>
+                                <input type="text" class="form-control input-form" value="@u.Prijmeni" id="prijmeni" name="prijmeni" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Email:</label>
+                                <input type="text" class="form-control input-form" value="@u.Email" id="email" name="email" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Telefoní číslo:</label>
+                                <input type="text" class="form-control input-form" value="@u.Telefon" id="telefon" name="telefon" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Město:</label>
+                                <input type="text" class="form-control input-form" value="@u.Mesto" id="mesto" name="mesto" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Ulice, číslo popisné:</label>
+                                <input type="text" class="form-control input-form" value="@u.UliceCp" id="uliceCp" name="uliceCp" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">PSČ:</label>
+                                <input type="text" class="form-control input-form" value="@u.Psc" id="psc" name="psc" />
+                            </div>
+                            }
+                           <div class="" style="padding-right: 10%;">
+                             <button class="loginButton" type="submit">Změnit udaje</button>
+                           </div>
+                        </form>
+            </div>
+            <div>
+                <form asp-controller="Uzivatel" asp-action="ZmenaHesla" method="post" style="border: 1px solid black; background-color: lightslategrey; padding: 15px;">
+                     <div class="form-group">
+                                <label class="control-label">Staré heslo:</label>
+                                <input type="password" class="form-control input-form" value="" id="psc" name="heslo" />
+                            </div>
+                             <div class="form-group">
+                                <label class="control-label">Nové heslo:</label>
+                                <input type="password" class="form-control input-form" value="" id="psc" name="noveHeslo" />
+                            </div>
+                <button class="loginButton" type="submit">Změnit heslo</button>
+                </form>
+                <hr style="margin-bottom: 80px; margin-top: 80px;" />
+                <a  class="loginButton btnSeznam" asp-action="VypisPrace" asp-route-id="@Model[0].Id" asp-route-datum="" asp-route-datum="" asp-route-projekt="0">Vypis moji prace</a>
+            </div>
+        </div>
+        
+            
+}
+else
+{
+    <p>Uzivatel neni prihlasen, nebo nemáte dostatečné oprávnění</p>
+}

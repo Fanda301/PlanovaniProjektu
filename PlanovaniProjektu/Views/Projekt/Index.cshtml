@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Projekty";
+}
+
+@if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer" || @ViewBag.Autorizovano == "Uzivatel")
+{
+
+    <div class="naStred" style="flex-direction: column; text-align: center;">
+        <h3>Moje Projekty</h3>
+        <div class="indexProjekty">
+            <a class="loginButton btnPrj" asp-controller="Projekt" asp-action="SeznamProjektu" asp-route-typ="vsechny" asp-route-vlastnik="uzivatel" >Všechny</a>
+             <a class="loginButton btnPrj" asp-controller="Projekt" asp-action="SeznamProjektu" asp-route-typ="aktualni" asp-route-vlastnik="uzivatel" >Aktuální</a>
+             <a class="loginButton btnPrj" asp-controller="Projekt" asp-action="SeznamProjektu" asp-route-typ="dokoncene" asp-route-vlastnik="uzivatel" >Dokončené</a>
+        </div>
+    </div>
+}
+
+@if (@ViewBag.Autorizovano == "Manazer")
+{
+    <hr />
+    <div div class="naStred" style="flex-direction: column; text-align: center;">
+        <h3>Všechny Projekty</h3>
+        <div class="indexProjekty">
+             <a class="loginButton btnPrj" asp-controller="Projekt" asp-action="SeznamProjektu" asp-route-typ="vsechny" asp-route-vlastnik="kdokoliv">Všechny</a>
+             <a class="loginButton btnPrj" asp-controller="Projekt" asp-action="SeznamProjektu" asp-route-typ="aktualni" asp-route-vlastnik="kdokoliv">Aktuální</a>
+             <a class="loginButton btnPrj" asp-controller="Projekt" asp-action="SeznamProjektu" asp-route-typ="dokoncene" asp-route-vlastnik="kdokoliv">Dokončené</a>
+        </div>
+    </div>
+}
+
+@if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer")
+{
+    <hr />
+    <div div class="naStred">        
+        <a class="loginButton btnPrj" asp-controller="Projekt" asp-action="NovyProjekt">Nový projekt</a>
+    </div> 
+}
+

@@ -1,0 +1,61 @@
+﻿@model PlanovaniProjektu.Models.TbProjekt
+
+
+
+    <h1>Založení nového projetku</h1>
+
+    <hr />
+    <div class="row">
+            <form asp-action="ZalozitNovy">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="Mrow">
+                    <div style="width: 80%;">
+                        <div class="form-group">
+                            <label asp-for="Stav" class="control-label"></label>
+                            <select asp-for="Stav" class="form-select">
+                              <option value="Aktivní">Aktivní</option>
+                              <option value="Dokončený">Dokončený</option>
+                            </select>
+                            <span asp-validation-for="Stav" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Nazev" class="control-label"></label>
+                            <input asp-for="Nazev" class="form-control" />
+                            <span asp-validation-for="Nazev" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Popis" class="control-label"></label>  
+                            <textarea asp-for="Popis" class="form-control" style="height: 200px;" /> </textarea>
+                            <span asp-validation-for="Popis" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div style="width: 80%;">
+                        <div class="form-group">
+                            <label asp-for="DatumZacatku" class="control-label"></label>
+                            <input asp-for="DatumZacatku" class="form-control" />
+                            <span asp-validation-for="DatumZacatku" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PlanovaneDokonceni" class="control-label"></label>
+                            <input asp-for="PlanovaneDokonceni" class="form-control" />
+                            <span asp-validation-for="PlanovaneDokonceni" class="text-danger"></span>
+                        </div>            
+                        <div class="form-group" style="margin-top: 20px;">
+                            <input type="submit" value="Vytvořit" class="loginButton" /> |
+                            <a class="loginButton btnSeznam" asp-action="Index">Zrušit</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </div>
+
+
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

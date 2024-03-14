@@ -1,0 +1,73 @@
+﻿@model PlanovaniProjektu.Models.TbProjekt
+
+@{
+    ViewData["Title"] = "View";
+}
+
+@if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer" || @ViewBag.Autorizovano == "Uzivatel")
+{
+    <h1>@Model.Nazev</h1>
+
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Stav)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Stav)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Nazev)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Nazev)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Popis)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Popis)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.DatumZacatku)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.DatumZacatku)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.PlanovaneDokonceni)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PlanovaneDokonceni)
+            </dd>
+            <dt class = "col-sm-2">
+                Vedouci
+            </dt>
+            <dd class = "col-sm-10">
+                @ViewBag.Vedouci
+            </dd>
+        </dl>
+    </div>
+
+
+    <div style="margin-bottom: 20px;">
+        @if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer")
+        {
+            <a class="loginButton btnSeznam" asp-action="Edit" asp-route-id="@Model?.Id">Upravit</a> 
+            <a class="loginButton btnSeznam" asp-action="Delete" asp-route-id="@Model?.Id">Vymazat</a> 
+        }  
+        <a class="loginButton btnSeznam" asp-action="Index">Zpět na seznam</a>
+    </div>
+    <hr />
+    <div>
+        @if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer")
+        {
+            <a class="loginButton btnSeznam" asp-controller="Uloha" asp-action="NovaUloha" asp-route-id="@Model.Id" >Nová úloha</a> 
+            <a class="loginButton btnSeznam" asp-controller="Uzivatel" asp-action="SpravaLidi" asp-route-id="@Model.Id" >Sprava lidi</a>
+        }
+         <a class="loginButton btnSeznam" asp-controller="Uloha" asp-action="SeznamUloh" asp-route-id="@Model.Id" >Seznam uloh</a> 
+         
+    </div>
+}
+

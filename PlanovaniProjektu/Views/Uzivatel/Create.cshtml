@@ -1,0 +1,83 @@
+﻿@model PlanovaniProjektu.Models.TbUzivatel
+
+
+<h1>Založení nového uživatele</h1>
+
+
+<hr />
+    <div class="">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="Mrow">
+                <div>
+                    <div class="form-group">
+                <label asp-for="Jmeno" class="control-label"></label>
+                <input asp-for="Jmeno" class="form-control input-form" />
+                <span asp-validation-for="Jmeno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prijmeni" class="control-label"></label>
+                <input asp-for="Prijmeni" class="form-control input-form" />
+                <span asp-validation-for="Prijmeni" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control input-form" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefon" class="control-label"></label>
+                <input asp-for="Telefon" class="form-control input-form" />
+                <span asp-validation-for="Telefon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mesto" class="control-label"></label>
+                <input asp-for="Mesto" class="form-control input-form" />
+                <span asp-validation-for="Mesto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UliceCp" class="control-label"></label>
+                <input asp-for="UliceCp" class="form-control input-form" />
+                <span asp-validation-for="UliceCp" class="text-danger"></span>
+            </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                <label asp-for="Psc" class="control-label"></label>
+                <input asp-for="Psc" class="form-control input-form" />
+                <span asp-validation-for="Psc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrihlasovaciJmeno" class="control-label"></label>
+                <input asp-for="PrihlasovaciJmeno" class="form-control input-form" />
+                <span asp-validation-for="PrihlasovaciJmeno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Heslo" class="control-label"></label>
+                <input type="password" asp-for="Heslo" class="form-control input-form" />
+                <span asp-validation-for="Heslo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Role" class="control-label"></label>
+                <select asp-for="Role" class ="form-control input-form">
+                    @foreach (TbRole r in ViewBag.Role)
+                    {
+                        <option value="@r.Id">@r.Nazev</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group" style="margin-top: 20px;">
+                <button type="submit" class="loginButton">Vytvořit</button> |
+                <a  class="loginButton btnSeznam"  asp-action="SeznamUzivatelu">Zpět na seznam</a>
+            </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PlanovaniProjektu.Models.TbUzivatel>
+
+
+
+<h1>Seznam uživatelů</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Jmeno)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Prijmeni)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.PrihlasovaciJmeno)
+            </th>
+            <th scope="col">Akce</th>
+            <th scope="col">Práce</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.Jmeno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prijmeni)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrihlasovaciJmeno)
+                </td>
+                <td>
+                    @if (@ViewBag.Lidi.Contains(@item.Id))
+                    {
+                        <a asp-action="OdebratOsobuZProjektu" asp-route-id="@item.Id" asp-route-projekt="@ViewBag.Projekt" style="background-color: red; color: white; padding-left: 15px; padding-right: 15px; font-size: 2em; text-decoration: none;">-</a>
+                    }
+                    else
+                    {
+                        <a asp-action="PridatOsobuDoProjektu" asp-route-id="@item.Id" asp-route-projekt="@ViewBag.Projekt" style="background-color: lightgreen; color: white; padding-left: 10px; padding-right: 10px; font-size: 2em; text-decoration: none;">+</a>
+                    }
+                </td>
+                <td>
+                    <a class="loginButton btnSeznam" asp-action="VypisPrace" asp-route-id="@item.Id" asp-route-datum="" asp-route-datum="@DateTime.Now" asp-route-projekt="@ViewBag.Projekt">Výpis práce</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

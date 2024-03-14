@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PlanovaniProjektu.Models.TbUloha>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>Seznam úloh</h1>
+
+@if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer")
+{
+    <p>
+        <a class="loginButton btnSeznam" asp-controller="Uloha" asp-action="NovaUloha" asp-route-id="@ViewBag.id" >Nová úloha</a>
+    </p>
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th cope="col">
+                @Html.DisplayNameFor(model => model.Nazev)
+            </th>
+            <th cope="col">
+                Hodinová Sazba
+            </th>
+            <th cope="col">
+               Předpokládaná doba trvání (hodiny)
+            </th>
+            <th cope="col" >
+                Akce
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <th scope="row">
+                @Html.DisplayFor(modelItem => item.Nazev)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.HodinovaSazba)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.PredpokladanaDobaTrvani)
+            </th>
+            <th>
+                 <a class="loginButton btnSeznam" asp-action="Details" asp-route-id="@item.Id">Detaily</a> 
+                @if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer")
+                {
+                        <a class="loginButton btnSeznam" asp-action="Edit" asp-route-id="@item.Id">Upravit</a> 
+                        <a class="loginButton btnSeznam" asp-action="Delete" asp-route-id="@item.Id">Odstranit</a>
+                    }
+            </th>
+        </tr>
+}
+    </tbody>
+</table>

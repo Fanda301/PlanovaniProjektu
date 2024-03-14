@@ -1,0 +1,24 @@
+﻿<div class="container vertical-center">
+    <div class="formular">
+            <form asp-controller="Login" asp-action="Login" method="post">
+               <div class="row">
+                   <label class="tucne odsazeni" for="username">Zadejde přihlašovací jméno:</label>
+                   <div class="naStred">
+                     <input class="zmensit" type="text" id="username" name="username" placeholder="PřihlašovacíJméno" />
+                   </div>
+               </div>
+               <div class="row">
+                    <label class="tucne odsazeni" for="password">Heslo:</label>
+                    <div class="naStred">
+                        <input class="zmensit" type="password" id="password" name="password" placeholder="*****" />
+                    </div>
+                    <div class="odsazeni"></div>
+               </div>
+               <div class="vPravo" style="padding-right: 10%;">
+                 <button class="loginButton" type="submit">Přihlásit</button>
+               </div>
+            </form>
+    </div>
+</div>
+
+

@@ -1,0 +1,55 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Seznam projaktů";
+}
+
+@if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer" || @ViewBag.Autorizovano == "Uzivatel")
+{
+
+    <table class="table">
+        <thead>
+            <tr>
+                 <th scope="col">
+                Název projektu
+            </th>
+             <th scope="col">
+                 Vedoucí
+            </th>
+             <th scope="col">
+                 Ulohy
+            </th>
+            <th scope="col">
+                 Předpokládané dokončení
+            </th>
+             <th scope="col">
+                 Podrobnosti
+            </th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (SeznamProjektuProVypis p in Model)
+        {
+            <tr>
+                <th scope="row">
+                    @p.nazev
+                </th>
+                <th>
+                    @p.vedouci
+                </th>
+                <th>
+                    @*@p.ulohy*@
+                    2
+                </th>
+                <th>
+                    @p.dokonceni
+                </th>
+                <th>
+                    <a class="loginButton btnSeznam" asp-controller="Projekt" asp-action="Details" asp-route-id="@p.Id" >Zobrazit</a>
+                </th>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+}

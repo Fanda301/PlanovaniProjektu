@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PlanovaniProjektu.Models.TbUzivatel>
+
+@{
+    ViewData["Title"] = "SeznamUzivatel";
+}
+
+<h1>Seznam uživatelů</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Jmeno)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Prijmeni)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.PrihlasovaciJmeno)
+            </th>
+            <th scope="col">Akce</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td scope="row">
+                @Html.DisplayFor(modelItem => item.Jmeno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prijmeni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrihlasovaciJmeno)
+            </td>
+            <td>
+                <a  class="loginButton btnSeznam" asp-action="Details" asp-route-id="@item.Id">Detaily</a> |
+                <a  class="loginButton btnSeznam" asp-action="VypisPrace" asp-route-id="@item.Id" asp-route-datum="" asp-route-datumdDruhy="" asp-route-projekt="0" >Vypis prace</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div style="display: flex; flex-direction: row; justify-content: end;">
+    <a class="loginButton btnSeznam" asp-action="Create">Založit nového uživatele</a>
+</div>

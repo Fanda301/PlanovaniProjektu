@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "AktivniPrace";
+}
+
+<h1>@ViewBag.NazevUlohy</h1>
+
+<p>@ViewBag.Popis</p>
+
+<hr />
+
+<form asp-action="UlozeniAktivniPrace">
+    <div id="stopky">
+        <span value="" id="hodiny" name="hodiny">00</span>:<span value="" id="minuty" name="minuty">00</span>:<span value="" id="sekundy" name="sekundy">00</span>
+        <input hidden="hidden" name="stopkyHodiny" id="stopkyHodiny" value="0" />
+        <input hidden="hidden" name="stopkyMinuty" id="stopkyMinuty" value="0" />
+        <input hidden="hidden" name="stopkySekundy" id="stopkySekundy" value="0" />
+    </div>
+    <button class="loginButton" type="button" id="startStopButton">Start/Stop</button>
+    <button class="loginButton" type="submit">Uložit a ukončit</button>
+    <button class="loginButton" type="submit">Uložit a označit úlohu jako splněnou</button>
+</form>
+

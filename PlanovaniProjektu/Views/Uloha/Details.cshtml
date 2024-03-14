@@ -1,0 +1,46 @@
+﻿@model PlanovaniProjektu.Models.TbUloha
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>@Model.Nazev</h1>
+
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nazev)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nazev)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Popis)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Popis)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HodinovaSazba)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HodinovaSazba)
+        </dd>
+        <dt class = "col-sm-2">
+            Předpokládaná doba trvání (hodiny)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PredpokladanaDobaTrvani)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (@ViewBag.Autorizovano == "Manazer" || @ViewBag.Autorizovano == "ProjektovyManazer")
+    {
+        <a class="loginButton btnSeznam" asp-action="Edit" asp-route-id="@Model?.Id">Upravit</a>
+    }
+    <a class="loginButton btnSeznam" asp-action="AktivniPrace" asp-route-id="@Model?.Id">Začít pracovat na úkolu</a> 
+    <a class="loginButton btnSeznam" asp-action="Index">Zpět na seznam</a>
+</div>
