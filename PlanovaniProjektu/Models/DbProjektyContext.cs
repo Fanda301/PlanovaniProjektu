@@ -87,9 +87,6 @@ public partial class DbProjektyContext : DbContext
 
             entity.ToTable("tb_Uzivatel");
 
-            entity.Property(e => e.BankovniSpojeni)
-                .HasMaxLength(100)
-                .IsUnicode(false);
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .IsUnicode(false);

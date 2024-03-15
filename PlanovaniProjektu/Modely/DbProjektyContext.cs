@@ -23,8 +23,6 @@ public partial class DbProjektyContext : DbContext
 
     public virtual DbSet<TbProjektyUzivatele> TbProjektyUzivateles { get; set; }
 
-    public virtual DbSet<TbProjektyUzivatele2> TbProjektyUzivatele2s { get; set; }
-
     public virtual DbSet<TbRole> TbRoles { get; set; }
 
 
@@ -98,11 +96,11 @@ public partial class DbProjektyContext : DbContext
             entity.ToTable("tb_ProjektyUzivatele");
         });
 
-        modelBuilder.Entity<TbProjektyUzivatele2>(entity =>
+        modelBuilder.Entity<TbProjektyUzivatele>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__tb_Proje__3214EC07D854F88F");
 
-            entity.ToTable("tb_ProjektyUzivatele2");
+            entity.ToTable("tb_ProjektyUzivatele");
         });
 
         modelBuilder.Entity<TbRole>(entity =>
@@ -134,9 +132,6 @@ public partial class DbProjektyContext : DbContext
 
             entity.ToTable("tb_Uzivatel");
 
-            entity.Property(e => e.BankovniSpojeni)
-                .HasMaxLength(100)
-                .IsUnicode(false);
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .IsUnicode(false);

@@ -21,8 +21,6 @@ public partial class TbUzivatel
 
     public string? Psc { get; set; }
 
-    public string? BankovniSpojeni { get; set; }
-
     public string PrihlasovaciJmeno { get; set; } = null!;
 
     public string Heslo { get; set; } = null!;
